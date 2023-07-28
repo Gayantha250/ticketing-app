@@ -16,7 +16,8 @@ public class CheckInController {
     @PostMapping("/saveall")
     public String saveVehicles(@RequestBody CheckInDTO checkInDTO){
 
-        checkInService.saveAll(checkInDTO);
-        return "ok";
+        String message = checkInService.saveAll(checkInDTO);
+        return message;
+
     }
 }
