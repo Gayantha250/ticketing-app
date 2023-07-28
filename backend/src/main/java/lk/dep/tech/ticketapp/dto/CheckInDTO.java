@@ -20,5 +20,6 @@ public class CheckInDTO {
     private String regNumber;
     private String description;
     private String date;
+    private String time;
 
 }

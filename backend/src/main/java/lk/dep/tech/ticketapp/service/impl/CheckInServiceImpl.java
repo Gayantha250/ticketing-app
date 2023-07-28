@@ -21,7 +21,8 @@ public class CheckInServiceImpl implements CheckInService {
                 checkInDTO.getArea(),
                 checkInDTO.getRegNumber(),
                 checkInDTO.getDescription(),
-                checkInDTO.getDate()
+                checkInDTO.getDate(),
+                checkInDTO.getTime()
         );
 
         checkInrepository.save(checkInEntity);
