@@ -2,6 +2,7 @@ package lk.dep.tech.ticketapp.entity;
 
 import lk.dep.tech.ticketapp.entity.enums.Area;
 import lk.dep.tech.ticketapp.entity.enums.Category;
+import lk.dep.tech.ticketapp.entity.enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,5 +37,8 @@ public class CheckInEntity {
 
     @Column(name = "time")
     private String time;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status",length = 150,nullable = false)
+    private Status status;
 
 }
