@@ -3,10 +3,7 @@ package lk.dep.tech.ticketapp.entity;
 import lk.dep.tech.ticketapp.entity.enums.Area;
 import lk.dep.tech.ticketapp.entity.enums.Category;
 import lk.dep.tech.ticketapp.entity.enums.Status;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -14,8 +11,7 @@ import javax.persistence.*;
 @Table(name = "check_in")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+@Data
 public class CheckInEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface CheckInrepository extends JpaRepository<CheckInEntity,Integer> {
 
 
+    CheckInEntity findAllByIdEquals(int vehicleId);
 }

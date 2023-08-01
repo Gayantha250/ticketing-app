@@ -1,24 +1,22 @@
-package lk.dep.tech.ticketapp.dto;
+package lk.dep.tech.ticketapp.dto.request;
 
-import ch.qos.logback.core.joran.spi.NoAutoStart;
 import lk.dep.tech.ticketapp.entity.enums.Area;
 import lk.dep.tech.ticketapp.entity.enums.Category;
 import lk.dep.tech.ticketapp.entity.enums.Status;
-import lombok.*;
-
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class CheckInDTO {
-    private int id;
+public class RequestDTO {
+
     private Category category;
     private Area area;
     private String regNumber;
     private String description;
     private String date;
     private String time;
-
     private Status status;
-
 }
