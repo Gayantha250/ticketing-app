@@ -25,4 +25,6 @@ public class CheckInController {
         List<CheckInDTO> allVehicles = checkInService.getAllVehicles();
         return allVehicles;
     }
+
+
 }
