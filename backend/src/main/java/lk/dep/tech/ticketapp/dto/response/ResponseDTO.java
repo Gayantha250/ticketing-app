@@ -1,4 +1,4 @@
-package lk.dep.tech.ticketapp.dto.request;
+package lk.dep.tech.ticketapp.dto.response;
 
 import lk.dep.tech.ticketapp.entity.enums.Area;
 import lk.dep.tech.ticketapp.entity.enums.Category;

@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
 
 @RestController
@@ -33,7 +34,7 @@ public class CheckInController {
             @RequestParam(value = "size") int size
     ) {
         PaginatedResponseDTO allVehiclesByPaginated = checkInService.getAllVehiclesByPaginated(page, size);
-        return new ResponseEntity<>(new StandardResponse(200,"Success",allVehiclesByPaginated),HttpStatus.OK);
+        return new ResponseEntity<StandardResponse>(new StandardResponse(200,"Success",allVehiclesByPaginated),HttpStatus.OK);
     }
 
     @GetMapping(value = "getvehiclebysearch",
@@ -51,6 +52,8 @@ public class CheckInController {
             return new ResponseEntity<>(new StandardResponse(200,"Success",requestDTO),HttpStatus.OK);
         }
     }
+
+
 
     @DeleteMapping("delete/{id}")
     public ResponseEntity<StandardResponse> deleteVeicle(@PathVariable(value = "id") int vehicleId) {

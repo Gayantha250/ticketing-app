@@ -11,4 +11,6 @@ import java.util.List;
 @Repository
 public interface CheckInrepository extends JpaRepository<CheckInEntity,Integer> {
     List<CheckInEntity> findAllByIdEqualsOrDateEqualsOrTimeEqualsOrRegNumberEqualsOrCategoryEquals(int id, String date, String time, String regNumber, Category category);
+
+    int countAllBy();
 }

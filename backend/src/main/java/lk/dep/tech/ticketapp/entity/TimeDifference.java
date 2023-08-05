@@ -18,7 +18,6 @@ public class TimeDifference {
     @OneToOne
     @JoinColumn(name = "vehicleId",referencedColumnName = "id")
     private CheckInEntity checkIn;
-
     @Column(name = "intime")
     private String time;
 

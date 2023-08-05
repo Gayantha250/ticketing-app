@@ -3,7 +3,7 @@ package lk.dep.tech.ticketapp.service.impl;
 import lk.dep.tech.ticketapp.dto.CheckInDTO;
 import lk.dep.tech.ticketapp.dto.paginated.PaginatedResponseDTO;
 import lk.dep.tech.ticketapp.dto.request.RequestDTO;
-import lk.dep.tech.ticketapp.dto.request.ResponseDTO;
+import lk.dep.tech.ticketapp.dto.response.ResponseDTO;
 import lk.dep.tech.ticketapp.entity.CheckInEntity;
 import lk.dep.tech.ticketapp.entity.enums.Category;
 import lk.dep.tech.ticketapp.exception.NotFoundException;
@@ -14,10 +14,8 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,7 +40,7 @@ public class CheckInServiceImpl implements CheckInService {
             checkInrepository.deleteById(vehicleId);
             return vehicleId+ " is deleted";
         }else {
-            throw new RuntimeException("id is not exist");
+            throw new NotFoundException("id is not exist");
         }
     }
 
@@ -55,7 +53,7 @@ public class CheckInServiceImpl implements CheckInService {
             CheckInDTO updateDTO = modelMapper.map(updateEntity, CheckInDTO.class);
             return updateDTO;
         }else {
-            throw new RuntimeException("There is no that id");
+            throw new NotFoundException("There is no that id");
         }
     }
 
@@ -70,6 +68,7 @@ public class CheckInServiceImpl implements CheckInService {
     @Override
     public PaginatedResponseDTO getAllVehiclesByPaginated(int page, int size) {
         Page<CheckInEntity> all = checkInrepository.findAll(PageRequest.of(page, size));
+        int number = checkInrepository.countAllBy();
         if(all.getSize()<1){
             throw  new NotFoundException("No data to retriew");
         }else {
@@ -77,7 +76,7 @@ public class CheckInServiceImpl implements CheckInService {
                     .map(checkInEntity -> modelMapper.map(checkInEntity, ResponseDTO.class))
                     .collect(Collectors.toList());
 
-            PaginatedResponseDTO pgrDTO = new PaginatedResponseDTO(list, 10 );
+            PaginatedResponseDTO pgrDTO = new PaginatedResponseDTO(list, number );
             return pgrDTO;
         }
     }
