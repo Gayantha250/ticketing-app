@@ -15,7 +15,6 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping("api/v1/checkin")
 public class CheckInController {
-
     @Autowired
     CheckInService checkInService;
 
@@ -47,7 +46,6 @@ public class CheckInController {
         }
 
     }
-
 
     @DeleteMapping("delete/{id}")
     public ResponseEntity<StandardResponse> deleteVeicle(@PathVariable(value = "id") int vehicleId) {
