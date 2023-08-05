@@ -14,7 +14,5 @@ public interface CheckInService {
     String deleteVehicle(int vehicleId);
 
     CheckInDTO updateVehicle(RequestDTO requestDTO, int vehicleId);
-
-
-    CheckInDTO getVehicleById(int vehicleId);
+    List<RequestDTO> getVehicleBySearch(int id, String date, String time, String regNumber, String vehicleType);
 }

@@ -59,13 +59,12 @@ public class CheckInServiceImpl implements CheckInService {
     }
 
     @Override
-    public CheckInDTO getVehicleById(int vehicleId) {
-        if(checkInrepository.existsById(vehicleId)){
-            CheckInEntity allByIdEquals = checkInrepository.findAllByIdEquals(vehicleId);
-            CheckInDTO DTO = modelMapper.map(allByIdEquals, CheckInDTO.class);
-            return DTO;
-        }else {
-            throw new RuntimeException("Id is not available");
-        }
+    public List<RequestDTO> getVehicleBySearch(int id, String date, String time, String regNumber, String vehicleType) {
+        CheckInEntity checkInEntity = checkInrepository.findAllByIdEqualsOrDateEqualsOrTimeEqualsOrRegNumberEqualsOrCategoryEquals(id, date, time, regNumber, vehicleType);
+        List<RequestDTO> requestDTO = modelMapper.map(checkInEntity, new TypeToken<List<RequestDTO>>() {
+        }.getType());
+        return requestDTO;
     }
+
+
 }
