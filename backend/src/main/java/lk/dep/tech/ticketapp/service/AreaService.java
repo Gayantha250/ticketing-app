@@ -1,12 +1,14 @@
 package lk.dep.tech.ticketapp.service;
 
 import lk.dep.tech.ticketapp.dto.AreaDTO;
+import lk.dep.tech.ticketapp.dto.request.RequestAreaDTO;
+import lk.dep.tech.ticketapp.dto.response.ResponseAreaDTO;
 import lk.dep.tech.ticketapp.entity.enums.Area;
 
 public interface AreaService {
     String saveDetails(AreaDTO areaDTO);
 
-    AreaDTO updateAreaDetails(AreaDTO areaDTO, Area area);
+    ResponseAreaDTO updateAreaDetails(RequestAreaDTO requestAreaDTO,int id);
 
-    String deleteArea(Area area);
+    String deleteArea(int id);
 }

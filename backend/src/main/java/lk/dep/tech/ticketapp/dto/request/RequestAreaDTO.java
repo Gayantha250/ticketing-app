@@ -1,4 +1,4 @@
-package lk.dep.tech.ticketapp.dto.response;
+package lk.dep.tech.ticketapp.dto.request;
 
 import lk.dep.tech.ticketapp.entity.enums.Area;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class ResponseAreaDTO {
+public class RequestAreaDTO {
 
     private int id;
     private Area area;

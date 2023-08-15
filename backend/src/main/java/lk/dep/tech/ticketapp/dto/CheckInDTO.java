@@ -1,6 +1,5 @@
 package lk.dep.tech.ticketapp.dto;
 
-import ch.qos.logback.core.joran.spi.NoAutoStart;
 import lk.dep.tech.ticketapp.entity.enums.Area;
 import lk.dep.tech.ticketapp.entity.enums.Category;
 import lk.dep.tech.ticketapp.entity.enums.Status;
@@ -18,7 +17,6 @@ public class CheckInDTO {
     private String description;
     private String date;
     private String time;
-
     private Status status;
-
+    private int area_id;
 }

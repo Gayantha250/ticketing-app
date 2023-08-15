@@ -2,7 +2,8 @@ package lk.dep.tech.ticketapp.controller;
 
 
 import lk.dep.tech.ticketapp.dto.AreaDTO;
-import lk.dep.tech.ticketapp.entity.enums.Area;
+import lk.dep.tech.ticketapp.dto.request.RequestAreaDTO;
+import lk.dep.tech.ticketapp.dto.response.ResponseAreaDTO;
 import lk.dep.tech.ticketapp.service.AreaService;
 import lk.dep.tech.ticketapp.utill.StandardResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,15 +25,14 @@ public class AreaController {
 
     }
 
-    @PatchMapping("/updateArea/{area}")
-    public ResponseEntity<StandardResponse> updateAreaDetails(@RequestBody AreaDTO areaDTO, @PathVariable(value = "area") Area area) {
-        AreaDTO areaDTO1 = areaService.updateAreaDetails(areaDTO, area);
-        return new ResponseEntity<>(new StandardResponse(204, "updated", areaDTO1), HttpStatus.NO_CONTENT);
+    @PatchMapping("/updateArea/{id}")
+    public ResponseEntity<StandardResponse> updateAreaDetails(@RequestBody RequestAreaDTO requestAreaDTO, @PathVariable(value = "id") int id) {
+        ResponseAreaDTO responseAreaDTO1 = areaService.updateAreaDetails(requestAreaDTO, id);
+        return new ResponseEntity<>(new StandardResponse(204, "updated", responseAreaDTO1), HttpStatus.NO_CONTENT);
     }
-
-    @DeleteMapping("/deletearea/{area}")
-    public ResponseEntity<StandardResponse> deleteAreaDetails(@PathVariable(value = "area") Area area) {
-        String message = areaService.deleteArea(area);
+    @DeleteMapping("/deletearea/{id}")
+    public ResponseEntity<StandardResponse> deleteAreaDetails(@PathVariable(value = "id") int id) {
+        String message = areaService.deleteArea(id);
         return new ResponseEntity<>(new StandardResponse(204,"deleted",message),HttpStatus.NO_CONTENT);
     }
 

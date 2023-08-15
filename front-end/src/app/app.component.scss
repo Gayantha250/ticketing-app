@@ -1,0 +1,52 @@
+mat-toolbar{
+  position: relative;
+}
+span{
+  position: absolute;
+  left: 40%;
+}
+#logout{
+  position: absolute;
+  right: 5%;
+}
+#footer{
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  width: 100%;
+  height: 56px;
+  background-color: #1c1c8f;
+  position: fixed;
+  bottom: 0;
+}
+#footer>span{
+  font-family: Roboto,sans-serif;
+  align-self: center;
+  color: white;
+  font-size: 16px;
+  //font-weight: bold;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+mat-sidenav-container{
+  height: calc(196vh - 115vh);
+}
+
+mat-sidenav{
+  width: 200px;
+  background-color: white;
+}
+
+a{
+  text-decoration: none;
+}
+mat-icon{
+top: 10px;
+}
+button:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+}
+

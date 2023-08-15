@@ -24,17 +24,16 @@ public class CheckInEntity {
     private Area area;
     @Column(name = "reg_number",length = 200,nullable = false)
     private String regNumber;
-
     @Column(name="description",length = 250,nullable = false)
     private String description;
-
     @Column(name = "date")
     private String date;
-
     @Column(name = "time")
     private String time;
     @Enumerated(EnumType.STRING)
     @Column(name = "status",length = 150,nullable = false)
     private Status status;
-
+    @ManyToOne
+    @JoinColumn(name="area_id", nullable=false)
+    private AreaEntity areaEntity;
 }

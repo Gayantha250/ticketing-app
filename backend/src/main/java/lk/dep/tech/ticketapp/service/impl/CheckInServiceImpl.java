@@ -4,10 +4,13 @@ import lk.dep.tech.ticketapp.dto.CheckInDTO;
 import lk.dep.tech.ticketapp.dto.paginated.PaginatedResponseDTO;
 import lk.dep.tech.ticketapp.dto.request.RequestDTO;
 import lk.dep.tech.ticketapp.dto.response.ResponseDTO;
+import lk.dep.tech.ticketapp.entity.AreaEntity;
 import lk.dep.tech.ticketapp.entity.CheckInEntity;
 import lk.dep.tech.ticketapp.entity.enums.Category;
 import lk.dep.tech.ticketapp.exception.NotFoundException;
+import lk.dep.tech.ticketapp.repo.AreaRepository;
 import lk.dep.tech.ticketapp.repo.CheckInrepository;
+import lk.dep.tech.ticketapp.service.AreaService;
 import lk.dep.tech.ticketapp.service.CheckInService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -16,20 +19,42 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class CheckInServiceImpl implements CheckInService {
     @Autowired
     private ModelMapper modelMapper;
     @Autowired
     CheckInrepository checkInrepository;
 
+    @Autowired
+    AreaRepository areaRepository;
+
     @Override
+    @Transactional
     public String saveAll(RequestDTO requestDTO) {
-        CheckInEntity checkInEntity = modelMapper.map(requestDTO, CheckInEntity.class);
-        checkInrepository.save(checkInEntity);
+        AreaEntity areaEntity = areaRepository.findByAreaEquals(requestDTO.getArea());
+      if(areaEntity!=null){
+          CheckInEntity checkInEntity = modelMapper.map(requestDTO, CheckInEntity.class);
+          checkInEntity.setAreaEntity(areaEntity);
+          checkInrepository.save(checkInEntity);
+
+          if(checkInrepository.existsByAreaEntity(areaEntity)){
+              List<CheckInEntity> chekEntityList = checkInrepository.findAllByAreaEntity(areaEntity);
+              if(chekEntityList.size()>0){
+                  areaEntity.setRecieved(chekEntityList.size());
+              }else {
+                  areaEntity.setRecieved(0);
+              }
+          }else {
+              throw new NotFoundException("No area Availabilty");
+          }
+          }
+
         return "Data is saved";
     }
 

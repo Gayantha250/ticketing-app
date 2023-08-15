@@ -12,6 +12,5 @@ import lombok.NoArgsConstructor;
 public class AreaDTO {
 
     private Area area;
-    private int totalAvailability;
-
+    private int availability;
 }

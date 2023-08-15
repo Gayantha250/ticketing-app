@@ -19,4 +19,5 @@ public class RequestDTO {
     private String date;
     private String time;
     private Status status;
+    private int recieved;
 }
