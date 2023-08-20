@@ -23,6 +23,9 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {CategorypopComponent} from "./component/popUpWindows/categorypop/categorypop.component";
 import { ParkingAreapopComponent } from './component/popUpWindows/parking-areapop/parking-areapop.component';
 import { CheckInpopComponent } from './component/popUpWindows/check-inpop/check-inpop.component';
+import {MatSelectModule} from "@angular/material/select";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,31 +35,34 @@ import { CheckInpopComponent } from './component/popUpWindows/check-inpop/check-
     CategoryComponent,
     ParkingAreaComponent,
     ForbiddenComponent,
-    CategorypopComponent,
     ParkingAreapopComponent,
-    CheckInpopComponent
+    CheckInpopComponent,
+    CategorypopComponent
 
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    RouterOutlet,
-    MatIconModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule,
-    ReactiveFormsModule,
-    FormsModule,
-    RouterModule,
-    HttpClientModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatInputModule,
-    MatFormFieldModule,
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        RouterOutlet,
+        MatIconModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatListModule,
+        ReactiveFormsModule,
+        FormsModule,
+        RouterModule,
+        HttpClientModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
 
 
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

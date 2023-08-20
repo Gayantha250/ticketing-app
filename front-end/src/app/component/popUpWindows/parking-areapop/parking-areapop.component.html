@@ -1,3 +1,4 @@
+<div>
 <button mat-icon-button style="float: right;margin: 5px" matDialogClose>
   <mat-icon >close1</mat-icon>
 </button>
@@ -17,10 +18,21 @@
     <mat-icon matSuffix>local_parking</mat-icon>
   </mat-form-field>
 
+
+  <mat-form-field>
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+
 </mat-dialog-content>
 
 <mat-dialog-actions >
-  <button mat-raised-button color="primary">Save</button>
-  <button mat-raised-button color="warn" matDialogClose>Cancel</button>
+  <button mat-raised-button color="primary" style="right: -145px">Save</button>
+  <button mat-raised-button color="warn" matDialogClose  style="right: -150px;">Cancel</button>
 </mat-dialog-actions>
 
+</div>

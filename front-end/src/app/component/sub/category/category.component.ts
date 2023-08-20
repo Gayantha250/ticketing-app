@@ -22,7 +22,7 @@ export class CategoryComponent implements OnInit{
   }
   openDialog() {
     this.matDialog.open(CategorypopComponent,{
-      width:'350xp',
+      width:'340xp',
 
     })
 

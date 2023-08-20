@@ -13,7 +13,7 @@ constructor(private matDialog:MatDialog) {
 }
   openDialog() {
     this.matDialog.open(ParkingAreapopComponent,{
-      width:'350xp',
+      width:'340xp',
 
     })
   }
