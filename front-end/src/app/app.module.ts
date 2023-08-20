@@ -22,6 +22,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {CategorypopComponent} from "./component/popUpWindows/categorypop/categorypop.component";
 import { ParkingAreapopComponent } from './component/popUpWindows/parking-areapop/parking-areapop.component';
+import { CheckInpopComponent } from './component/popUpWindows/check-inpop/check-inpop.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { ParkingAreapopComponent } from './component/popUpWindows/parking-areapo
     ParkingAreaComponent,
     ForbiddenComponent,
     CategorypopComponent,
-    ParkingAreapopComponent
+    ParkingAreapopComponent,
+    CheckInpopComponent
 
   ],
   imports: [
