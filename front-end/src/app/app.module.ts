@@ -14,9 +14,14 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-
-
-
+import { ForbiddenComponent } from './component/sub/forbidden/forbidden.component';
+import {HttpClientModule} from "@angular/common/http";
+import {MatButtonModule} from "@angular/material/button";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatInputModule} from "@angular/material/input";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {CategorypopComponent} from "./component/popUpWindows/categorypop/categorypop.component";
+import { ParkingAreapopComponent } from './component/popUpWindows/parking-areapop/parking-areapop.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +30,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     ListComponent,
     CategoryComponent,
     ParkingAreaComponent,
+    ForbiddenComponent,
+    CategorypopComponent,
+    ParkingAreapopComponent
 
   ],
   imports: [
@@ -38,7 +46,13 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     MatListModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule,
+
 
   ],
   providers: [],

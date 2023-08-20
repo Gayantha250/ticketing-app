@@ -6,10 +6,13 @@ import lk.dep.tech.ticketapp.dto.request.RequestDTO;
 import lk.dep.tech.ticketapp.dto.response.ResponseDTO;
 import lk.dep.tech.ticketapp.entity.AreaEntity;
 import lk.dep.tech.ticketapp.entity.CheckInEntity;
+import lk.dep.tech.ticketapp.entity.HourlyRateEntity;
+import lk.dep.tech.ticketapp.entity.TotalCharge;
 import lk.dep.tech.ticketapp.entity.enums.Category;
 import lk.dep.tech.ticketapp.exception.NotFoundException;
 import lk.dep.tech.ticketapp.repo.AreaRepository;
 import lk.dep.tech.ticketapp.repo.CheckInrepository;
+import lk.dep.tech.ticketapp.repo.HourlyRaterepository;
 import lk.dep.tech.ticketapp.service.AreaService;
 import lk.dep.tech.ticketapp.service.CheckInService;
 import org.modelmapper.ModelMapper;
@@ -32,13 +35,17 @@ public class CheckInServiceImpl implements CheckInService {
     CheckInrepository checkInrepository;
 
     @Autowired
+    HourlyRaterepository hourlyRaterepository;
+    @Autowired
     AreaRepository areaRepository;
 
     @Override
     @Transactional
     public String saveAll(RequestDTO requestDTO) {
         AreaEntity areaEntity = areaRepository.findByAreaEquals(requestDTO.getArea());
-      if(areaEntity!=null){
+        HourlyRateEntity byCategoryEntity = hourlyRaterepository.findByCategory(requestDTO.getCategory());
+        if(byCategoryEntity!=null){
+        if(areaEntity!=null){
           CheckInEntity checkInEntity = modelMapper.map(requestDTO, CheckInEntity.class);
           checkInEntity.setAreaEntity(areaEntity);
           checkInrepository.save(checkInEntity);
@@ -53,11 +60,13 @@ public class CheckInServiceImpl implements CheckInService {
           }else {
               throw new NotFoundException("No area Availabilty");
           }
-          }
+          }else {
+            throw  new NotFoundException("No Category Available");
+        }
+        }
 
         return "Data is saved";
     }
-
 
     @Override
     public String deleteVehicle(int vehicleId) {
@@ -104,6 +113,11 @@ public class CheckInServiceImpl implements CheckInService {
             PaginatedResponseDTO pgrDTO = new PaginatedResponseDTO(list, number );
             return pgrDTO;
         }
+    }
+
+    @Override
+    public TotalCharge getDetailsById(int parkingId) {
+        return null;
     }
 
 

@@ -3,6 +3,7 @@ package lk.dep.tech.ticketapp.service.impl;
 import lk.dep.tech.ticketapp.dto.HourlyRateDTO;
 import lk.dep.tech.ticketapp.dto.request.RequestHourlyRateDTO;
 import lk.dep.tech.ticketapp.entity.HourlyRateEntity;
+import lk.dep.tech.ticketapp.entity.enums.Category;
 import lk.dep.tech.ticketapp.exception.DuplicateEntryException;
 import lk.dep.tech.ticketapp.exception.NotFoundException;
 import lk.dep.tech.ticketapp.repo.HourlyRaterepository;
@@ -64,5 +65,18 @@ public class HourlyRateServiceImpl implements HourlyRateService {
         }else {
             throw new NotFoundException("Id is not exist");
         }
+    }
+
+    @Override
+    public HourlyRateDTO getRatesByCategory(Category category) {
+      HourlyRateEntity hourlyRateEntity= hourlyRaterepository.getByCategory(category);
+      if(hourlyRateEntity!=null){
+          HourlyRateDTO map = modelMapper.map(hourlyRateEntity, HourlyRateDTO.class);
+          return map;
+      }else {
+          throw new NotFoundException("Category is Not Exist");
+      }
+
+
     }
 }

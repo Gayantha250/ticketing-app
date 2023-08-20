@@ -1,0 +1,29 @@
+
+<button mat-icon-button style="float: right;margin: 5px" matDialogClose>
+  <mat-icon >close1</mat-icon>
+</button>
+
+<mat-dialog-content>
+  <header>
+    <h1>Add Rates</h1>
+  </header>
+
+ <p> <mat-form-field>
+    <input matInput placeholder="Vehicle Type">
+    <mat-icon matSuffix>local_taxi</mat-icon>
+  </mat-form-field></p>
+
+  <mat-form-field>
+    <input matInput placeholder="Rate Per hour">
+    <mat-icon matSuffix>paid</mat-icon>
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions >
+  <button mat-raised-button color="primary">Save</button>
+  <button mat-raised-button color="warn" matDialogClose>Cancel</button>
+</mat-dialog-actions>
+
+
+

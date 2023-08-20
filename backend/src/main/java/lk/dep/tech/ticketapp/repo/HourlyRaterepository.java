@@ -11,5 +11,7 @@ import org.springframework.stereotype.Repository;
 public interface HourlyRaterepository extends JpaRepository<HourlyRateEntity,Integer> {
 
 
+    HourlyRateEntity findByCategory(Category category);
 
+    HourlyRateEntity getByCategory(Category category);
 }
