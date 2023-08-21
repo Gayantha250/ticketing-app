@@ -2,6 +2,8 @@ package lk.dep.tech.ticketapp.service.impl;
 
 import lk.dep.tech.ticketapp.dto.AreaDTO;
 import lk.dep.tech.ticketapp.dto.request.RequestAreaDTO;
+import lk.dep.tech.ticketapp.dto.request.RequestDTO;
+import lk.dep.tech.ticketapp.dto.response.ResponseAreaCapacityDTO;
 import lk.dep.tech.ticketapp.dto.response.ResponseAreaDTO;
 import lk.dep.tech.ticketapp.entity.AreaEntity;
 import lk.dep.tech.ticketapp.entity.CheckInEntity;
@@ -12,9 +14,11 @@ import lk.dep.tech.ticketapp.repo.AreaRepository;
 import lk.dep.tech.ticketapp.repo.CheckInrepository;
 import lk.dep.tech.ticketapp.service.AreaService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -63,5 +67,32 @@ public class AreaServiceImpl implements AreaService {
         }else{
             throw new NotFoundException("Area is not found");
         }
+    }
+    @Override
+    public List<ResponseAreaDTO> getAllArea() {
+        List<AreaEntity> allAreaEntityList = areaRepository.findAll();
+        if(allAreaEntityList.size()>0){
+            List<ResponseAreaDTO> responseAreaDTOList= modelMapper.map(allAreaEntityList, new TypeToken<List<ResponseAreaDTO>>() {
+            }.getType());
+            return responseAreaDTOList;
+        }else {
+            throw new NotFoundException("No data to retriew");
+        }
+    }
+    @Override
+    public List<ResponseAreaCapacityDTO> getonlyAreaAndCapacity() {
+        List<AreaEntity> newList=new ArrayList<>();
+        List<AreaEntity> allEntities = areaRepository.findAll();
+    if(allEntities.size()>0){
+        for (AreaEntity allEntity : allEntities) {
+            AreaEntity areaEntity = new AreaEntity(allEntity.getId(), allEntity.getArea(), allEntity.getCapacity());
+            newList.add(allEntity);
+        }
+       List<ResponseAreaCapacityDTO> responseAreaCapacityDTOList = modelMapper.map(newList, new TypeToken<List<ResponseAreaCapacityDTO>>() {
+        }.getType());
+        return responseAreaCapacityDTOList;
+    }else {
+        throw new NotFoundException("Please Enter the Area");
+    }
     }
 }

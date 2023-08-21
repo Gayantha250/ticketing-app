@@ -1,16 +1,16 @@
-package lk.dep.tech.ticketapp.dto;
+package lk.dep.tech.ticketapp.dto.response;
 
 import lk.dep.tech.ticketapp.entity.enums.Area;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AreaDTO {
+@Data
+public class ResponseAreaCapacityDTO {
 
+    private int id;
     private Area area;
     private int capacity;
 }

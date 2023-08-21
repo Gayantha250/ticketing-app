@@ -12,7 +12,7 @@ public class ResponseAreaDTO {
 
     private int id;
     private Area area;
-    private int totalAvailability;
+    private int capacity;
     private int recieved;
 
 }

@@ -3,6 +3,7 @@ package lk.dep.tech.ticketapp.controller;
 
 import lk.dep.tech.ticketapp.dto.AreaDTO;
 import lk.dep.tech.ticketapp.dto.request.RequestAreaDTO;
+import lk.dep.tech.ticketapp.dto.response.ResponseAreaCapacityDTO;
 import lk.dep.tech.ticketapp.dto.response.ResponseAreaDTO;
 import lk.dep.tech.ticketapp.service.AreaService;
 import lk.dep.tech.ticketapp.utill.StandardResponse;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -35,6 +38,14 @@ public class AreaController {
         String message = areaService.deleteArea(id);
         return new ResponseEntity<>(new StandardResponse(204,"deleted",message),HttpStatus.NO_CONTENT);
     }
-
-
+    @GetMapping("/getall")
+    public ResponseEntity<StandardResponse> getAllAreas(){
+        List<ResponseAreaDTO> allAreaDTOSList = areaService.getAllArea();
+        return new ResponseEntity<>(new StandardResponse(200,"success",allAreaDTOSList),HttpStatus.OK);
+    }
+    @GetMapping("/getAreaCapacity")
+    public ResponseEntity<StandardResponse> getAreas(){
+        List<ResponseAreaCapacityDTO> responseAreaCapacityDTOList = areaService.getonlyAreaAndCapacity();
+        return new ResponseEntity<>(new StandardResponse(200,"Success",responseAreaCapacityDTOList),HttpStatus.OK);
+    }
 }

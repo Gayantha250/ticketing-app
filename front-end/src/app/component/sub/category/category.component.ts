@@ -14,11 +14,6 @@ export class CategoryComponent implements OnInit{
 
   constructor(public categoryService:CategoryService,private matDialog:MatDialog){}
   ngOnInit(): void {
-    this.categoryService.getCategory().subscribe(data=>{
-
-    });
-
-
   }
   openDialog() {
     this.matDialog.open(CategorypopComponent,{

@@ -22,11 +22,16 @@ public class AreaEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "area",length = 150,nullable = false)
     private Area area;
-    @Column(name = "totalAvailability",length = 100, nullable = false)
-    private int availability;
+    @Column(name = "capacity",length = 100, nullable = false)
+    private int capacity;
     @Column(name = "recieved",length = 100, nullable = false)
     private int recieved;
     @OneToMany(mappedBy = "areaEntity")
     private Set<CheckInEntity> checkInEntities;
 
+    public AreaEntity(int id, Area area, int capacity) {
+        this.id = id;
+        this.area = area;
+        this.capacity = capacity;
+    }
 }

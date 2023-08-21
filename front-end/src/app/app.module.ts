@@ -60,7 +60,7 @@ import {MatNativeDateModule} from "@angular/material/core";
         MatSelectModule,
         MatDatepickerModule,
         MatNativeDateModule,
-
+        HttpClientModule
 
     ],
   providers: [],

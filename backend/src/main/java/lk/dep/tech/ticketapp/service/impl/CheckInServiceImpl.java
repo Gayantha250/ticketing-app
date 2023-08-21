@@ -116,8 +116,14 @@ public class CheckInServiceImpl implements CheckInService {
     }
 
     @Override
-    public TotalCharge getDetailsById(int parkingId) {
-        return null;
+    public CheckInDTO getDetailsById(int parkingId) {
+       if(checkInrepository.existsById(parkingId)){
+           CheckInEntity referenceById = checkInrepository.getReferenceById(parkingId);
+           CheckInDTO checkInDTO = modelMapper.map(referenceById, CheckInDTO.class);
+           return checkInDTO;
+       }else {
+           throw new NotFoundException("No id Found");
+       }
     }
 
 

@@ -8,10 +8,15 @@
     <h1>Add Rates</h1>
   </header>
 
- <p> <mat-form-field>
-    <input matInput placeholder="Vehicle Type">
-    <mat-icon matSuffix>local_taxi</mat-icon>
-  </mat-form-field></p>
+  <mat-form-field>
+    <mat-label>Vehicle Category</mat-label>
+    <mat-select>
+      <mat-option value="one"><mat-icon>directions_car</mat-icon>CAR</mat-option>
+      <mat-option value="two"><mat-icon>motorcycle</mat-icon> BIKE</mat-option>
+      <mat-option value="three"><mat-icon>electric_rickshaw</mat-icon> THREEWHEEL</mat-option>
+      <mat-option value="four"><mat-icon>airport_shuttle</mat-icon> VAN</mat-option>
+    </mat-select>
+  </mat-form-field>
 
   <mat-form-field>
     <input matInput placeholder="Rate Per hour">
@@ -21,7 +26,7 @@
 </mat-dialog-content>
 
 <mat-dialog-actions >
-  <button mat-raised-button color="primary" style="right: -145px">Save</button>
+  <button mat-raised-button color="primary" style="right: -145px" type="submit">Save</button>
   <button mat-raised-button color="warn" matDialogClose style="right: -150px;">Cancel</button>
 </mat-dialog-actions>
 
