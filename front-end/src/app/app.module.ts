@@ -26,6 +26,7 @@ import { CheckInpopComponent } from './component/popUpWindows/check-inpop/check-
 import {MatSelectModule} from "@angular/material/select";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import {MatTableModule} from "@angular/material/table";
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,6 @@ import {MatNativeDateModule} from "@angular/material/core";
     ParkingAreapopComponent,
     CheckInpopComponent,
     CategorypopComponent
-
   ],
     imports: [
         BrowserModule,
@@ -60,8 +60,8 @@ import {MatNativeDateModule} from "@angular/material/core";
         MatSelectModule,
         MatDatepickerModule,
         MatNativeDateModule,
-        HttpClientModule
-
+        HttpClientModule,
+        MatTableModule
     ],
   providers: [],
   bootstrap: [AppComponent]

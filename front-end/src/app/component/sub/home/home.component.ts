@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Area} from "../../popUpWindows/parking-areapop/parking-areapop.component";
-import {AreaService} from "../../../service/area.service";
 import {HomeService} from "../../../service/home.service";
+import {Area} from "../../../DTO/ResponseAreaDTO";
+import {elementAt} from "rxjs";
+import {MatDialog} from "@angular/material/dialog";
+import {CheckInpopComponent} from "../../popUpWindows/check-inpop/check-inpop.component";
 
 @Component({
   selector: 'app-home',
@@ -9,24 +11,31 @@ import {HomeService} from "../../../service/home.service";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit{
-  areas: Area[]=[];
-constructor(public homeService:HomeService) {
-}
+  constructor(public homeService:HomeService) {}
+
+   areas: Array<Area>=[];
+
+  tabKey:any=[];
+  tabValue:any=[];
   ngOnInit(): void {
     this.getData();
   }
   getData() {
     this.homeService.getDatas().subscribe(
       (response:any) => {
-        console.log(response);
-        if(response){
-          this.areas=response as Area[];
-          console.log(this.areas);
-        }
+        this.areas=response.data as Array<Area>;
+      this.areas.forEach(element=>{
+        this.tabKey=Object.keys(element);
+        this.tabValue.push(Object.values(element));
+      })
+
+
       },
       (error) => {
         console.log(error);
       }
     )
   }
+
+
 }

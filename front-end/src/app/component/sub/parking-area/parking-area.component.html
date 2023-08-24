@@ -1,3 +1,19 @@
 <mat-dialog-actions>
   <button mat-raised-button color="primary"   (click)="openDialog()">Add New Area</button>
 </mat-dialog-actions>
+<div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th *ngFor="let key of tabKey">{{key}}</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let arr of tabValue">
+      <td *ngFor="let values of arr">{{values}}</td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>

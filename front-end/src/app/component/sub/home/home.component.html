@@ -1,1 +1,17 @@
-<h1>home</h1>
+<div>
+  <table class="table table-striped ">
+    <thead>
+    <tr>
+      <th *ngFor="let key of tabKey">{{key}}</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let arr of tabValue">
+      <td *ngFor="let values of arr">{{values}}</td>
+<!--      <td><button id="update" mat-stroked-button color="accent">Update</button></td>-->
+<!--      <td><button mat-stroked-button color="warn">Delete</button></td>-->
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -3,15 +3,7 @@ import {NgForm} from "@angular/forms";
 import {AreaService} from "../../../service/area.service";
 
 
-export class Area {
-  constructor(
-    public id: number,
-    public area: String,
-    public capacity: number,
-    public recieved: number
-  ) {
-  }
-}
+
 
 @Component({
   selector: 'app-parking-areapop',

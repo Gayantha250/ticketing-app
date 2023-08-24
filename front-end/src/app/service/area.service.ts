@@ -16,4 +16,8 @@ BASE_URL="http://localhost:8080";
 
   }
 
+  public getArea(){
+    return this.httpClient.get(this.BASE_URL+"/api/v1/area/getAreaCapacity");
+  }
+
 }

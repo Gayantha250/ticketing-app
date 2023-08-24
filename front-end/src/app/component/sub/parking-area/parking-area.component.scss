@@ -3,3 +3,10 @@ button{
   right: 10px;
   top:20px;
 }
+
+div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  //width: 60%;
+}
