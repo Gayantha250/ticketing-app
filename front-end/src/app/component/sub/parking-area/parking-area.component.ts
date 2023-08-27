@@ -27,14 +27,6 @@ constructor(private matDialog:MatDialog,public areaService:AreaService) {
     this.areaService.getArea().subscribe((response: any) => {
         this.savedAreas = response.data as Array<SavedArea>;
         console.log(this.updateAreaValues.length);
-        // if(this.updateAreaValues.length>0){
-        //   console.log("inside getAll-3");
-        //  this.savedAreas.forEach(items=>{
-        //    if(items.id===this.updateAreaValues[0].id){
-        //      items.capacity=this.updateAreaValues[0].capacity;
-        //    }
-        //  })
-        // }
         this.savedAreas.forEach(element => {
           this.tabKey = Object.keys(element);
           this.tabValue.push(Object.values(element));
@@ -47,5 +39,12 @@ constructor(private matDialog:MatDialog,public areaService:AreaService) {
   }
   ngOnInit(): void {
   this.getAllAreas();
+  }
+
+  deleteArea(tabValueElement: any) {
+    const id = parseInt(tabValueElement[0], 10)
+    this.areaService.delete(id).subscribe(response=>{
+      window.location.reload();
+    })
   }
 }

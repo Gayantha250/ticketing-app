@@ -17,4 +17,7 @@ public interface CheckInrepository extends JpaRepository<CheckInEntity,Integer> 
     int countAllBy();
     List<CheckInEntity> findAllByAreaEntity(AreaEntity areaEntity); /// direct approach to the area_id co.lunmn
     boolean existsByAreaEntity(AreaEntity areaEntity);
+
+    void deleteAllByAreaEntity(AreaEntity areaEntity);
+
 }

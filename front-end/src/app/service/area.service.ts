@@ -23,6 +23,10 @@ export class AreaService {
   public update(areaUpdateFormData: any) {
     return this.httpClient.patch(this.BASE_URL + `/api/v1/area/updatecapacity/${this.idVal}`, areaUpdateFormData);
   }
+
+  public delete(id:any){
+    return this.httpClient.delete(this.BASE_URL + `/api/v1/area/deletearea/${id}`);
+  }
   showSave = false;
   showUpdate = false;
   public showSavedAreas() {
@@ -38,10 +42,5 @@ export class AreaService {
     this.updateArea.push(arrayValue[1], arrayValue[2]);
   }
 
-  // addUpdatedData(data:any){
-  //   console.log("addUpdate-1");
-  //     if(data.id===this.idVal){
-  //       this.savedAreas.push(data.id,data.area,data.capacity);
-  //     }
-  // }
+
 }

@@ -13,7 +13,7 @@
     <tr *ngFor="let arr of tabValue; let i = index">
       <td *ngFor="let values of arr">{{values}}</td>
     <td> <button mat-stroked-button color="primary" id="update" (click)="openDialog(); areaService.showUpdateAreas(); areaService.updatedId(tabValue[i])">Update</button></td>
-    <td><button mat-stroked-button color="warn" id="delete">Delete</button></td>
+    <td><button mat-stroked-button color="warn" id="delete" (click)="deleteArea(tabValue[i])">Delete</button></td>
     </tr>
     </tbody>
   </table>

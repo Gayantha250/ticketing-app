@@ -18,10 +18,12 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class AreaServiceImpl implements AreaService {
 
     @Autowired
@@ -59,11 +61,16 @@ public class AreaServiceImpl implements AreaService {
             }
     }
     @Override
+    @Transactional
     public String deleteArea(int id) {
         if(areaRepository.existsById(id)){
-            AreaEntity referenceById = areaRepository.getReferenceById(id);
-            areaRepository.delete(referenceById);
-            return " deleted";
+            AreaEntity referenceByEntity = areaRepository.getReferenceById(id);
+            List<CheckInEntity> allByAreaEntity = checkInrepository.findAllByAreaEntity(referenceByEntity);
+            if(allByAreaEntity.size()>0){
+                checkInrepository.deleteAllByAreaEntity(referenceByEntity);
+            }
+                areaRepository.delete(referenceByEntity);
+                return " deleted";
         }else{
             throw new NotFoundException("Area is not found");
         }
