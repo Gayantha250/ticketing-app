@@ -18,4 +18,6 @@ public interface AreaService {
     List<ResponseAreaDTO> getAllArea();
 
     List<ResponseAreaCapacityDTO> getonlyAreaAndCapacity();
+
+    ResponseAreaCapacityDTO updateAreaCapacityDetails(AreaDTO areaDTO, int areaId);
 }

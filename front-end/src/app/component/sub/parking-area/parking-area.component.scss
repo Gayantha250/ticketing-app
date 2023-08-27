@@ -1,7 +1,10 @@
-button{
+#add{
   position: absolute;
   right: 10px;
   top:20px;
+}
+#add:hover{
+  scale: 1.1;
 }
 
 div{
@@ -9,4 +12,15 @@ div{
   flex-direction: column;
   align-items: center;
   //width: 60%;
+}
+#update:hover{
+  color: white;
+  background-color: green;
+  border-color: black;
+}
+
+#delete:hover{
+  color: white;
+  background-color: red;
+  border-color: black;
 }

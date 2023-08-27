@@ -1,5 +1,5 @@
 <mat-dialog-actions>
-  <button mat-raised-button color="primary"   (click)="openDialog()">Add New Area</button>
+  <button mat-raised-button color="primary"  (click)="openDialog();areaService.showSavedAreas()" id="add">Add New Area</button>
 </mat-dialog-actions>
 <div>
   <table class="table">
@@ -10,9 +10,10 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let arr of tabValue">
+    <tr *ngFor="let arr of tabValue; let i = index">
       <td *ngFor="let values of arr">{{values}}</td>
-
+    <td> <button mat-stroked-button color="primary" id="update" (click)="openDialog(); areaService.showUpdateAreas(); areaService.updatedId(tabValue[i])">Update</button></td>
+    <td><button mat-stroked-button color="warn" id="delete">Delete</button></td>
     </tr>
     </tbody>
   </table>

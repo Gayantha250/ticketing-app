@@ -95,4 +95,20 @@ public class AreaServiceImpl implements AreaService {
         throw new NotFoundException("Please Enter the Area");
     }
     }
+
+    @Override
+    public ResponseAreaCapacityDTO updateAreaCapacityDetails(AreaDTO areaDTO, int areaId) {
+        if(areaRepository.existsById(areaId)){
+            AreaEntity referenceByIdEntity = areaRepository.getReferenceById(areaId);
+            if(!areaDTO.getArea().equals(referenceByIdEntity.getArea())){
+                referenceByIdEntity.setCapacity(areaDTO.getCapacity());
+                areaRepository.save(referenceByIdEntity);
+              return modelMapper.map(referenceByIdEntity,ResponseAreaCapacityDTO.class);
+            }else {
+                throw new RuntimeException("Can not change the Area type");
+            }
+        } else {
+            throw  new NotFoundException("No such Area Found");
+        }
+    }
 }

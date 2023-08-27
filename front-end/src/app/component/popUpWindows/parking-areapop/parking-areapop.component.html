@@ -1,17 +1,18 @@
-<div>
+<div *ngIf="areaService.showUpdate">
 <button mat-icon-button style="float: right;margin: 5px" matDialogClose>
   <mat-icon >close1</mat-icon>
 </button>
 
-  <form  #areaForm="ngForm"  (ngSubmit)="area(areaForm)">
+  <form  #areaFormUpdate="ngForm"  (ngSubmit)="areaUpdate(areaFormUpdate)">
+
 <mat-dialog-content>
   <header>
-    <h1>Add New Area</h1>
+    <h1>Update Area</h1>
   </header>
 
   <mat-form-field>
     <mat-label>Area</mat-label>
-    <mat-select name="area" ngModel>
+    <mat-select name="area" [(ngModel)]="selectedArea">
       <mat-option value="CARAREA"><mat-icon>directions_car</mat-icon>CARAREA</mat-option>
       <mat-option value="BIKEAREA"><mat-icon>motorcycle</mat-icon> BIKEAREA</mat-option>
       <mat-option value="THREEWHEELAREA"><mat-icon>electric_rickshaw</mat-icon>THREEWHEELAREA</mat-option>
@@ -20,15 +21,55 @@
 
 
   <mat-form-field >
-    <input matInput placeholder="Capacity" name="capacity" ngModel >
+    <input matInput placeholder="Capacity" name="capacity" [(ngModel)]="capacityValue" >
     <mat-icon matSuffix>local_parking</mat-icon>
   </mat-form-field>
 
 </mat-dialog-content>
 
 <mat-dialog-actions >
-  <button mat-raised-button color="primary" style="right: -145px" type="submit">Save</button>
+  <button mat-raised-button color="primary" style="right: -145px" type="submit">Update</button>
   <button mat-raised-button color="warn" matDialogClose  style="right: -150px;">Cancel</button>
 </mat-dialog-actions>
   </form>
 </div>
+
+
+
+
+
+<div *ngIf="areaService.showSave">
+  <button mat-icon-button style="float: right;margin: 5px" matDialogClose>
+    <mat-icon >close1</mat-icon>
+  </button>
+
+  <form  #areaForm="ngForm"  (ngSubmit)="area(areaForm)">
+    <mat-dialog-content>
+      <header>
+        <h1>Add New Area</h1>
+      </header>
+
+      <mat-form-field>
+        <mat-label>Area</mat-label>
+        <mat-select name="area" ngModel>
+          <mat-option value="CARAREA"><mat-icon>directions_car</mat-icon>CARAREA</mat-option>
+          <mat-option value="BIKEAREA"><mat-icon>motorcycle</mat-icon> BIKEAREA</mat-option>
+          <mat-option value="THREEWHEELAREA"><mat-icon>electric_rickshaw</mat-icon>THREEWHEELAREA</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <mat-form-field >
+        <input matInput placeholder="Capacity" name="capacity" ngModel >
+        <mat-icon matSuffix>local_parking</mat-icon>
+      </mat-form-field>
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions >
+      <button mat-raised-button color="primary" style="right: -145px" type="submit">Save</button>
+      <button mat-raised-button color="warn" matDialogClose  style="right: -150px;">Cancel</button>
+    </mat-dialog-actions>
+  </form>
+</div>
+

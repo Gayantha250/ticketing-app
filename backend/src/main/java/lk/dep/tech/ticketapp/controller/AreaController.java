@@ -33,6 +33,14 @@ public class AreaController {
         ResponseAreaDTO responseAreaDTO1 = areaService.updateAreaDetails(requestAreaDTO, id);
         return new ResponseEntity<>(new StandardResponse(204, "updated", responseAreaDTO1), HttpStatus.NO_CONTENT);
     }
+
+    @PatchMapping("updatecapacity/{id}")
+    public ResponseEntity<StandardResponse> updateCapasityDetails(@RequestBody AreaDTO areaDTO, @PathVariable(value = "id") int areaId ){
+        ResponseAreaCapacityDTO responseAreaCapacityDTO = areaService.updateAreaCapacityDetails(areaDTO, areaId);
+        return  new ResponseEntity<>(new StandardResponse(204,"updated",responseAreaCapacityDTO),HttpStatus.OK);
+
+    }
+
     @DeleteMapping("/deletearea/{id}")
     public ResponseEntity<StandardResponse> deleteAreaDetails(@PathVariable(value = "id") int id) {
         String message = areaService.deleteArea(id);

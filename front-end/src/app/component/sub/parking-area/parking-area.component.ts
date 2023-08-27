@@ -13,22 +13,31 @@ import {elementAt} from "rxjs";
 })
 export class ParkingAreaComponent implements OnInit{
  savedAreas:Array<SavedArea>=[];
+ updateAreaValues=this.areaService.savedAreas;
  tabKey:any=[];
  tabValue:any=[];
 constructor(private matDialog:MatDialog,public areaService:AreaService) {
 }
-  openDialog() {
+    openDialog() {
     this.matDialog.open(ParkingAreapopComponent,{
       width:'340xp',
-
     })
   }
   getAllAreas(){
- this.areaService.getArea().subscribe((response:any)=>{
-    this.savedAreas=response.data as Array<SavedArea>;
-    this.savedAreas.forEach(element=>{
-      this.tabKey=Object.keys(element);
-      this.tabValue.push(Object.values(element));
+    this.areaService.getArea().subscribe((response: any) => {
+        this.savedAreas = response.data as Array<SavedArea>;
+        console.log(this.updateAreaValues.length);
+        // if(this.updateAreaValues.length>0){
+        //   console.log("inside getAll-3");
+        //  this.savedAreas.forEach(items=>{
+        //    if(items.id===this.updateAreaValues[0].id){
+        //      items.capacity=this.updateAreaValues[0].capacity;
+        //    }
+        //  })
+        // }
+        this.savedAreas.forEach(element => {
+          this.tabKey = Object.keys(element);
+          this.tabValue.push(Object.values(element));
     });
  },
    error => {
