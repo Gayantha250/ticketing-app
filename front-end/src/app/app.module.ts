@@ -15,7 +15,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ForbiddenComponent } from './component/sub/forbidden/forbidden.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MatButtonModule} from "@angular/material/button";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatInputModule} from "@angular/material/input";
@@ -27,6 +27,8 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatTableModule} from "@angular/material/table";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {InterceptorService} from "./service/interceptor.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,9 +63,12 @@ import {MatTableModule} from "@angular/material/table";
         MatDatepickerModule,
         MatNativeDateModule,
         HttpClientModule,
-        MatTableModule
+        MatTableModule,
+      MatProgressBarModule
     ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:InterceptorService,multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

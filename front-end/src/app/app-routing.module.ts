@@ -8,6 +8,7 @@ import {ListComponent} from "./component/sub/list/list.component";
 import {ParkingAreaComponent} from "./component/sub/parking-area/parking-area.component";
 
 const routes:Routes=[
+
   {
     path:"category",component:CategoryComponent
   },

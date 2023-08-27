@@ -30,7 +30,7 @@ export class ParkingAreapopComponent implements OnInit {
     areaForm.value.capacity = parseInt(newCapacity, 10);
     this.areaService.saveArea(areaForm.value).subscribe(
       (response) => {
-        // console.log(response);
+      window.location.reload();
       },
       (error => {
         console.log(error);

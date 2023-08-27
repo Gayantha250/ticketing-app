@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {LoaderService} from "./service/loader.service";
 
 
 @Component({
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  constructor(public loadService:LoaderService) {
+  }
 
   title = 'front-end';
   opened=false;

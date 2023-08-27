@@ -11,6 +11,10 @@
   <button id="logout"><mat-icon>logout</mat-icon></button>
 </mat-toolbar>
 
+<div *ngIf="loadService.isLoading | async" class="loader">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
+
 <div id="footer">
   <span>All Right Reserved @Gayantha Kuruppuarachchi</span>
 </div>
@@ -32,4 +36,8 @@
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+
+
+
 
