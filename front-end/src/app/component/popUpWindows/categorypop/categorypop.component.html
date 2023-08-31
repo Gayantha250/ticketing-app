@@ -1,25 +1,26 @@
-<div>
+<div *ngIf="categoryService.save">
 <button mat-icon-button style="float: right;margin: 5px" matDialogClose>
   <mat-icon >close1</mat-icon>
 </button>
 
-<mat-dialog-content>
+  <form  #categoryForm="ngForm" (ngSubmit)="submitCategory(categoryForm)">
+  <mat-dialog-content>
   <header>
     <h1>Add Rates</h1>
   </header>
 
   <mat-form-field>
     <mat-label>Vehicle Category</mat-label>
-    <mat-select>
-      <mat-option value="one"><mat-icon>directions_car</mat-icon>CAR</mat-option>
-      <mat-option value="two"><mat-icon>motorcycle</mat-icon> BIKE</mat-option>
-      <mat-option value="three"><mat-icon>electric_rickshaw</mat-icon> THREEWHEEL</mat-option>
-      <mat-option value="four"><mat-icon>airport_shuttle</mat-icon> VAN</mat-option>
+    <mat-select name="category" ngModel>
+      <mat-option value="CAR"><mat-icon>directions_car</mat-icon>CAR</mat-option>
+      <mat-option value="BIKE"><mat-icon>motorcycle</mat-icon> BIKE</mat-option>
+      <mat-option value="THREEWHEEL"><mat-icon>electric_rickshaw</mat-icon> THREEWHEEL</mat-option>
+      <mat-option value="VAN"><mat-icon>airport_shuttle</mat-icon> VAN</mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="Rate Per hour">
+    <input matInput placeholder="Rate Per hour" name="hourly_rate" ngModel>
     <mat-icon matSuffix>paid</mat-icon>
   </mat-form-field>
 
@@ -29,6 +30,42 @@
   <button mat-raised-button color="primary" style="right: -145px" type="submit">Save</button>
   <button mat-raised-button color="warn" matDialogClose style="right: -150px;">Cancel</button>
 </mat-dialog-actions>
+  </form>
+</div>
 
+
+<div *ngIf="categoryService.update">
+  <button mat-icon-button style="float: right;margin: 5px" matDialogClose>
+    <mat-icon >close1</mat-icon>
+  </button>
+
+  <form  #categoryUpdateForm="ngForm" (ngSubmit)="submitUpdatedCategory(categoryUpdateForm)">
+    <mat-dialog-content>
+      <header>
+        <h1>Update Rates</h1>
+      </header>
+
+      <mat-form-field>
+        <mat-label>Vehicle Category</mat-label>
+        <mat-select name="category" [(ngModel)]="categoryValue">
+          <mat-option value="CAR"><mat-icon>directions_car</mat-icon>CAR</mat-option>
+          <mat-option value="BIKE"><mat-icon>motorcycle</mat-icon> BIKE</mat-option>
+          <mat-option value="THREEWHEEL"><mat-icon>electric_rickshaw</mat-icon> THREEWHEEL</mat-option>
+          <mat-option value="VAN"><mat-icon>airport_shuttle</mat-icon> VAN</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Rate Per hour" name="hourly_rate"  [(ngModel)]="hourly_rate">
+        <mat-icon matSuffix>paid</mat-icon>
+      </mat-form-field>
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions >
+      <button mat-raised-button color="primary" style="right: -145px" type="submit">Update</button>
+      <button mat-raised-button color="warn" matDialogClose style="right: -150px;">Cancel</button>
+    </mat-dialog-actions>
+  </form>
 </div>
 

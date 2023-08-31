@@ -11,7 +11,7 @@ public interface HourlyRateService {
 
     List<HourlyRateDTO> getAllRates();
 
-    RequestHourlyRateDTO updateRates(HourlyRateDTO hourlyRateDTO, int id);
+   String updateRates(RequestHourlyRateDTO requestHourlyRateDTO, int id);
 
     String deleteRate(int categoryId);
 

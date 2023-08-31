@@ -30,11 +30,10 @@ public class RateCalculationController {
         return new ResponseEntity<>(new StandardResponse(200,"Success",hourlyRateDTOS),HttpStatus.OK);
     }
     @PatchMapping("/updaterates/{id}")
-    public ResponseEntity<StandardResponse> updateRates(@RequestBody HourlyRateDTO hourlyRateDTO,@PathVariable(value = "id") int id){
-        RequestHourlyRateDTO requestHourlyRateDTO = hourlyRateService.updateRates(hourlyRateDTO, id);
-        return  new ResponseEntity<>(new StandardResponse(204,"updated",requestHourlyRateDTO),HttpStatus.NO_CONTENT);
+    public ResponseEntity<StandardResponse> updateRates(@RequestBody RequestHourlyRateDTO requestHourlyRateDTO,@PathVariable(value = "id") int id){
+        String message = hourlyRateService.updateRates(requestHourlyRateDTO, id);
+        return  new ResponseEntity<>(new StandardResponse(204,"updated",message),HttpStatus.OK);
     }
-
     @DeleteMapping("/deleterates/{id}")
     public ResponseEntity<StandardResponse> deleteRates(@PathVariable(value = "id") int categoryId){
         String message = hourlyRateService.deleteRate(categoryId);

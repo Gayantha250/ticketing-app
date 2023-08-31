@@ -28,13 +28,13 @@ public class AreaController {
 
     }
 
-    @PatchMapping("/updateArea/{id}")
+    @PatchMapping("updateArea/{id}")
     public ResponseEntity<StandardResponse> updateAreaDetails(@RequestBody RequestAreaDTO requestAreaDTO, @PathVariable(value = "id") int id) {
         ResponseAreaDTO responseAreaDTO1 = areaService.updateAreaDetails(requestAreaDTO, id);
         return new ResponseEntity<>(new StandardResponse(204, "updated", responseAreaDTO1), HttpStatus.NO_CONTENT);
     }
 
-    @PatchMapping("updatecapacity/{id}")
+    @PatchMapping("/updatecapacity/{id}")
     public ResponseEntity<StandardResponse> updateCapasityDetails(@RequestBody AreaDTO areaDTO, @PathVariable(value = "id") int areaId ){
         ResponseAreaCapacityDTO responseAreaCapacityDTO = areaService.updateAreaCapacityDetails(areaDTO, areaId);
         return  new ResponseEntity<>(new StandardResponse(204,"updated",responseAreaCapacityDTO),HttpStatus.OK);

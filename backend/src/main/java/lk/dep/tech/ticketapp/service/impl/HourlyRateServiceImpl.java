@@ -27,7 +27,7 @@ public class HourlyRateServiceImpl implements HourlyRateService {
         HourlyRateEntity rateEntity = modelMapper.map(requestHourlyRateDTO, HourlyRateEntity.class);
         List<HourlyRateEntity> allHourlyRateEntity = hourlyRaterepository.findAll();
         for (HourlyRateEntity hourlyRateEntity : allHourlyRateEntity) {
-            if (hourlyRateEntity.getCategory().equals(rateEntity.getHourly_rate())) {
+            if (hourlyRateEntity.getCategory().equals(rateEntity.getCategory())) {
                 throw new DuplicateEntryException("The Category is already exist");
             }
         }
@@ -43,18 +43,20 @@ public class HourlyRateServiceImpl implements HourlyRateService {
     }
 
     @Override
-    public RequestHourlyRateDTO updateRates(HourlyRateDTO hourlyRateDTO, int id) {
+    public String updateRates(RequestHourlyRateDTO requestHourlyRateDTO, int id) {
 
         if(hourlyRaterepository.existsById(id)){
             HourlyRateEntity referenceIdEntity = hourlyRaterepository.getReferenceById(id);
-            modelMapper.map(hourlyRateDTO,referenceIdEntity);
-            hourlyRaterepository.save(referenceIdEntity);
-            RequestHourlyRateDTO requestHourlyDTO = modelMapper.map(referenceIdEntity, RequestHourlyRateDTO.class);
-            return requestHourlyDTO;
+            if( referenceIdEntity.getCategory().equals(requestHourlyRateDTO.getCategory())){
+                modelMapper.map(requestHourlyRateDTO,referenceIdEntity);
+                hourlyRaterepository.save(referenceIdEntity);
+                return "successFully Updated";
+            }else {
+             throw  new DuplicateEntryException("Can not Change the Category type");
+            }
         }else {
             throw new NotFoundException("id is not found");
         }
-
     }
     @Override
     public String deleteRate(int categoryId) {
@@ -66,7 +68,6 @@ public class HourlyRateServiceImpl implements HourlyRateService {
             throw new NotFoundException("Id is not exist");
         }
     }
-
     @Override
     public HourlyRateDTO getRatesByCategory(Category category) {
       HourlyRateEntity hourlyRateEntity= hourlyRaterepository.getByCategory(category);
@@ -76,7 +77,5 @@ public class HourlyRateServiceImpl implements HourlyRateService {
       }else {
           throw new NotFoundException("Category is Not Exist");
       }
-
-
     }
 }

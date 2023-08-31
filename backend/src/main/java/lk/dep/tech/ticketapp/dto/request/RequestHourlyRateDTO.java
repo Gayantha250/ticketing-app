@@ -11,5 +11,4 @@ import lombok.NoArgsConstructor;
 public class RequestHourlyRateDTO {
     private Category category;
     public String hourly_rate;
-
 }

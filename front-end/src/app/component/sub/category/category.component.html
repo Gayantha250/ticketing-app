@@ -1,5 +1,22 @@
 <mat-dialog-actions>
-
-  <button mat-raised-button color="primary"   (click)="openDialog()">Add New Category </button>
+  <button mat-raised-button color="primary"   (click)="openDialog(); categoryService.showSave();" id="add">Add New Category</button>
 </mat-dialog-actions>
 
+
+<div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th *ngFor="let key of tabKey">{{key}}</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let arr of tabValue; let i = index">
+      <td *ngFor="let values of arr">{{values}}</td>
+      <td> <button mat-stroked-button color="primary" id="update" (click)="openDialog(); categoryService.showUpdate(); bindValues(tabValue[i]);" >Update</button></td>
+      <td><button mat-stroked-button color="warn" id="delete" (click)="deleteCat(tabValue[i])" >Delete</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

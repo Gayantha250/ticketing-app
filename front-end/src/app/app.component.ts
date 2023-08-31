@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+
 import {LoaderService} from "./service/loader.service";
+import { Component, NgZone } from '@angular/core';
 
 
 @Component({
@@ -8,9 +9,16 @@ import {LoaderService} from "./service/loader.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(public loadService:LoaderService) {
+  constructor(public loadService:LoaderService,private ngZone: NgZone) {
   }
-
   title = 'front-end';
   opened=false;
+  toggleMenu() {
+    this.ngZone.run(() => {
+      setTimeout(() => {
+        this.opened = !this.opened;
+      }, 0);
+    });
+  }
+
 }

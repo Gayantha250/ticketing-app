@@ -15,7 +15,7 @@ export class InterceptorService implements HttpInterceptor{
 
       this.loaderService.isLoading.next(true);
 
-    return timer(2000).pipe( // Adjust the time duration (in milliseconds)
+    return timer(1500).pipe( // Adjust the time duration (in milliseconds)
       switchMapTo(next.handle(req)),
       finalize(() => {
           this.loaderService.isLoading.next(false);
