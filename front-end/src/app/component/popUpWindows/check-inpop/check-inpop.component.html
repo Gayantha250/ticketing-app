@@ -1,53 +1,52 @@
+
 <div>
+    <form #inputCheckIns="ngForm"  (ngSubmit)="saveCheckIn(inputCheckIns)">
   <button mat-icon-button style="float: right;margin: 5px" matDialogClose>
     <mat-icon >close1</mat-icon>
   </button>
+
 
   <mat-dialog-content>
     <header>
       <h1>Add New Record</h1>
     </header>
 
-    <mat-form-field>
+    <mat-form-field >
       <mat-label>Vehicle Category</mat-label>
-      <mat-select>
-        <mat-option value="one"><mat-icon>directions_car</mat-icon>CAR</mat-option>
-        <mat-option value="two"><mat-icon>motorcycle</mat-icon> BIKE</mat-option>
-        <mat-option value="three"><mat-icon>electric_rickshaw</mat-icon> THREEWHEEL</mat-option>
-        <mat-option value="four"><mat-icon>airport_shuttle</mat-icon> VAN</mat-option>
+      <mat-select name="category" ngModel>
+        <mat-option value="CAR"><mat-icon>directions_car</mat-icon>CAR</mat-option>
+        <mat-option value="BIKE"><mat-icon>motorcycle</mat-icon> BIKE</mat-option>
+        <mat-option value="THREEWHEEL"><mat-icon>electric_rickshaw</mat-icon> THREEWHEEL</mat-option>
+        <mat-option value="VAN"><mat-icon>airport_shuttle</mat-icon>VAN</mat-option>
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field >
       <mat-label>Area</mat-label>
-      <mat-select>
-        <mat-option value="one"><mat-icon>directions_car</mat-icon>CARAREA</mat-option>
-        <mat-option value="two"><mat-icon>motorcycle</mat-icon> BIKEAREA</mat-option>
-        <mat-option value="three"><mat-icon>electric_rickshaw</mat-icon> THREEWHEELAREA</mat-option>
+      <mat-select name="area" ngModel>
+        <mat-option value="CARAREA"><mat-icon>directions_car</mat-icon>CARAREA</mat-option>
+        <mat-option value="BIKEAREA"><mat-icon>motorcycle</mat-icon> BIKEAREA</mat-option>
+        <mat-option value="THREEWHEELAREA"><mat-icon>electric_rickshaw</mat-icon> THREEWHEELAREA</mat-option>
       </mat-select>
     </mat-form-field>
 
-
-
     <mat-form-field>
-      <input matInput placeholder="Reg Number">
+      <input matInput placeholder="Reg Number" name="regNumber" ngModel>
       <mat-icon matSuffix>pin</mat-icon>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Description">
+      <input matInput placeholder="Description" name="description" ngModel>
       <mat-icon matSuffix>description</mat-icon>
     </mat-form-field>
 
-
     <mat-form-field>
       <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepicker]="picker">
+      <input matInput [matDatepicker]="picker" name="date" ngModel>
       <mat-hint>MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-
 
   </mat-dialog-content>
 
@@ -55,5 +54,6 @@
     <button mat-raised-button color="primary" style="right: -145px" type="submit">Save</button>
     <button mat-raised-button color="warn" matDialogClose  style="right: -150px;">Cancel</button>
   </mat-dialog-actions>
-
+</form>
 </div>
+

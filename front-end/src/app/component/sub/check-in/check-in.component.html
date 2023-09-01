@@ -1,3 +1,27 @@
 <mat-dialog-actions>
-  <button mat-raised-button color="primary"   (click)="openDialog()">Add New Record</button>
+  <button mat-raised-button color="primary"   (click)="openDialog()" id="add">Add New Record</button>
 </mat-dialog-actions>
+
+
+<div class="input-group mb-3">
+  <input  type="text" id="search"  class="form-control" placeholder="Search Here" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+
+
+<div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th *ngFor="let key of tabKey">{{key}}</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let arr of tabValue; let i = index">
+      <td *ngFor="let values of arr">{{values}}</td>
+      <td> <button mat-stroked-button color="primary" id="View" >View</button></td>
+      <td><button mat-stroked-button color="warn" id="delete" >Delete</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -44,7 +44,6 @@ export class CategoryComponent implements OnInit{
       this.bindingValues.push(tabValueElement[0],tabValueElement[1],tabValueElement[2]);
       this.categoryService.bindingAllValues(this.bindingValues);
   }
-
   deleteCat(tabValueElement: any) {
     console.log(tabValueElement[0]);
     this.categoryService.deleteCategory(tabValueElement[0]).subscribe((response:any)=>{

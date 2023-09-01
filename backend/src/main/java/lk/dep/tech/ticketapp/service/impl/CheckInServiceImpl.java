@@ -9,6 +9,8 @@ import lk.dep.tech.ticketapp.entity.CheckInEntity;
 import lk.dep.tech.ticketapp.entity.HourlyRateEntity;
 import lk.dep.tech.ticketapp.entity.TotalCharge;
 import lk.dep.tech.ticketapp.entity.enums.Category;
+import lk.dep.tech.ticketapp.entity.enums.Status;
+import lk.dep.tech.ticketapp.exception.DuplicateEntryException;
 import lk.dep.tech.ticketapp.exception.NotFoundException;
 import lk.dep.tech.ticketapp.repo.AreaRepository;
 import lk.dep.tech.ticketapp.repo.CheckInrepository;
@@ -23,6 +25,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,18 +46,30 @@ public class CheckInServiceImpl implements CheckInService {
     @Override
     @Transactional
     public String saveAll(RequestDTO requestDTO) {
+        LocalTime currentTime = LocalTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        String checkOutTime = currentTime.format(formatter);
         AreaEntity areaEntity = areaRepository.findByAreaEquals(requestDTO.getArea());
         HourlyRateEntity byCategoryEntity = hourlyRaterepository.findByCategory(requestDTO.getCategory());
         if(byCategoryEntity!=null){
         if(areaEntity!=null){
-          CheckInEntity checkInEntity = modelMapper.map(requestDTO, CheckInEntity.class);
-          checkInEntity.setAreaEntity(areaEntity);
-          checkInrepository.save(checkInEntity);
-
+            requestDTO.setStatus(Status.CHECKIN);
+            requestDTO.setTime(checkOutTime );
+             List<CheckInEntity> list=checkInrepository.findAllByStatus(Status.CHECKIN);
+            for (CheckInEntity checkEntity : list) {
+                if(!checkEntity.getRegNumber().equals(requestDTO.getRegNumber())){
+                    CheckInEntity checkInEntity = modelMapper.map(requestDTO, CheckInEntity.class);
+                    checkInEntity.setAreaEntity(areaEntity);
+                    checkInrepository.save(checkInEntity);
+                }else {
+                    throw new DuplicateEntryException("Duplicate Registered Number");
+                }
+            }
           if(checkInrepository.existsByAreaEntity(areaEntity)){
               List<CheckInEntity> chekEntityList = checkInrepository.findAllByAreaEntity(areaEntity);
               if(chekEntityList.size()>0){
                   areaEntity.setRecieved(chekEntityList.size());
+                  return "Data is Saved";
               }else {
                   areaEntity.setRecieved(0);
               }
@@ -61,11 +77,13 @@ public class CheckInServiceImpl implements CheckInService {
               throw new NotFoundException("No area Availabilty");
           }
           }else {
-            throw  new NotFoundException("No Category Available");
+            throw  new NotFoundException("No area Available");
         }
+        }else {
+            throw new NotFoundException("No category available");
         }
 
-        return "Data is saved";
+        throw new NotFoundException("No category available");
     }
 
     @Override

@@ -1,5 +1,65 @@
-button{
+
+#add{
   position: absolute;
   right: 10px;
   top:20px;
 }
+#add:hover{
+  scale: 1.1;
+}
+
+div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  //width: 60%;
+}
+#View:hover{
+  color: white;
+  background-color: green;
+  border-color: black;
+}
+
+#delete:hover{
+  color: white;
+  background-color: red;
+  border-color: black;
+}
+#search{
+  position: absolute;
+  top: 22px;
+  width: 40%;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.table {
+position: absolute;
+  top: 100px;
+  width: 70%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding:6px;
+  text-align: left;
+}
+
+
+.table thead th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+#View,
+#delete {
+  margin: 4px;
+
+}
+
+

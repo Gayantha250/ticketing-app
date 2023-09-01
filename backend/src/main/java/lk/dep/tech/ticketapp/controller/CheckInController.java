@@ -29,7 +29,6 @@ import java.util.List;
 public class CheckInController {
     @Autowired
     CheckInService checkInService;
-
     @Autowired
     HourlyRateService hourlyRateService;
 
