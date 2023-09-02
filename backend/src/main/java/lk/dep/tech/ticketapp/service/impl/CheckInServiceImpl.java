@@ -87,8 +87,13 @@ public class CheckInServiceImpl implements CheckInService {
     }
 
     @Override
+    @Transactional
     public String deleteVehicle(int vehicleId) {
         if(checkInrepository.existsById(vehicleId)){
+            CheckInEntity referenceById = checkInrepository.getReferenceById(vehicleId);
+            List<CheckInEntity> allByArea = checkInrepository.findAllByArea(referenceById.getArea());
+            AreaEntity areaEntityByArea = areaRepository.findAreaEntityByArea(referenceById.getArea());
+            areaEntityByArea.setRecieved(allByArea.size()-1);
             checkInrepository.deleteById(vehicleId);
             return vehicleId+ " is deleted";
         }else {

@@ -37,9 +37,12 @@ export class CheckInComponent implements OnInit{
       }
       )
   }
-
   ngOnInit(): void {
     this.getAllDetails();
   }
-
+  deleteRow(tabValueElement: any) {
+    this.checkInService.deleteCheckIns(tabValueElement[0]).subscribe((response:any)=>{
+     window.location.reload();
+    });
+  }
 }

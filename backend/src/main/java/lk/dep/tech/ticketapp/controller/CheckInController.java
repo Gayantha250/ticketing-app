@@ -37,7 +37,6 @@ public class CheckInController {
         String message = checkInService.saveAll(requestDTO);
         return new ResponseEntity<StandardResponse>(new StandardResponse(201, "success", message), HttpStatus.CREATED);
     }
-
     @GetMapping(value = "/getall",
             params = {"page", "size"})
     public ResponseEntity<StandardResponse> getAllVeicles(

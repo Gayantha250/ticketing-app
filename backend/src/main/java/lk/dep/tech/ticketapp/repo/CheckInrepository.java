@@ -3,6 +3,7 @@ package lk.dep.tech.ticketapp.repo;
 import lk.dep.tech.ticketapp.dto.request.RequestDTO;
 import lk.dep.tech.ticketapp.entity.AreaEntity;
 import lk.dep.tech.ticketapp.entity.CheckInEntity;
+import lk.dep.tech.ticketapp.entity.enums.Area;
 import lk.dep.tech.ticketapp.entity.enums.Category;
 import lk.dep.tech.ticketapp.entity.enums.Status;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,4 +23,6 @@ public interface CheckInrepository extends JpaRepository<CheckInEntity,Integer> 
     void deleteAllByAreaEntity(AreaEntity areaEntity);
 
     List<CheckInEntity> findAllByStatus(Status checkin);
+
+    List<CheckInEntity> findAllByArea(Area area);
 }

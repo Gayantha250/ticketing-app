@@ -20,7 +20,7 @@
     <tr *ngFor="let arr of tabValue; let i = index">
       <td *ngFor="let values of arr">{{values}}</td>
       <td> <button mat-stroked-button color="primary" id="View" >View</button></td>
-      <td><button mat-stroked-button color="warn" id="delete" >Delete</button></td>
+      <td><button mat-stroked-button color="warn" id="delete" (click)="deleteRow(tabValue[i])" >Delete</button></td>
     </tr>
     </tbody>
   </table>

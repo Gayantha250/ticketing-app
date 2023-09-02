@@ -13,5 +13,4 @@ public interface AreaRepository extends JpaRepository<AreaEntity,Integer> {
 
     AreaEntity findAreaEntityByArea(Area area);
 
-
 }

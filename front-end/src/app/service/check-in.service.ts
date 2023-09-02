@@ -15,4 +15,8 @@ export class CheckInService {
     return this.httpClient.get(this.BASE_URL+`/api/v1/checkin/getall?page=${page}&size=${size}`);
   }
 
+  deleteCheckIns(tabValueElementElement: any){
+    return this.httpClient.delete(this.BASE_URL+`/api/v1/checkin/delete/${tabValueElementElement}`);
+  }
+
 }

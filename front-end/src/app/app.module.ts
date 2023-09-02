@@ -29,7 +29,7 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {MatTableModule} from "@angular/material/table";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {InterceptorService} from "./service/interceptor.service";
-import {Ng2SearchPipeModule} from "ng2-search-filter";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,8 +66,6 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
         HttpClientModule,
         MatTableModule,
       MatProgressBarModule,
-      Ng2SearchPipeModule
-
     ],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:InterceptorService,multi:true}

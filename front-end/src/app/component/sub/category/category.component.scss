@@ -25,3 +25,31 @@ div{
   border-color: black;
 }
 
+.table {
+  position: absolute;
+  top: 100px;
+  width: 70%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding:6px;
+  text-align: left;
+}
+
+
+.table thead th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+#update,
+#delete {
+  margin: 4px;
+
+}
