@@ -13,7 +13,6 @@ export class CheckInpopComponent implements OnInit{
   }
   ngOnInit(): void {
   }
-
   saveCheckIn(inputCheckIns: NgForm) {
   this.checkInService.saveAllCheckIn(inputCheckIns.value).subscribe((response:any)=>{
    window.location.reload();

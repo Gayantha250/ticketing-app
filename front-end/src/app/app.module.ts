@@ -29,6 +29,7 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {MatTableModule} from "@angular/material/table";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {InterceptorService} from "./service/interceptor.service";
+import { BillpopComponent } from "./component/popUpWindows/billpop/billpop.component";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {InterceptorService} from "./service/interceptor.service";
     ForbiddenComponent,
     ParkingAreapopComponent,
     CheckInpopComponent,
-    CategorypopComponent
+    CategorypopComponent,
+    BillpopComponent
   ],
     imports: [
         BrowserModule,

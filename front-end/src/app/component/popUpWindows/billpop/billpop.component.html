@@ -1,0 +1,22 @@
+<div>
+  <button mat-icon-button style="float: right;margin: 5px" matDialogClose>
+    <mat-icon >close1</mat-icon>
+  </button>
+  <header>
+    <h1>View Details</h1>
+  </header>
+
+  <h3>Check in time-:   <span name="time">{{time}}</span></h3>
+  <h3>CheckOut Time-:   <span name="checkOutTime">{{checkOutTime}}</span></h3>
+  <h3>Vehicle Type-:   <span name="category">{{categorye}}</span></h3>
+  <h3>Date-:  <span name="date">{{date}}</span></h3>
+  <h3>Hourly Rate-:  <span name="hourly_Rate">{{hourly_Rate}}</span></h3>
+  <h3>Registered Number-:  <span name="regNumber">{{regNumber}}</span></h3>
+  <h3>Total Cost-:  <span name="total_cost">{{total_cost}}</span></h3>
+
+  <mat-dialog-actions >
+    <button mat-raised-button color="primary" style="right: -145px" type="submit">Print</button>
+    <button mat-raised-button color="warn" matDialogClose style="right: -150px;">Cancel</button>
+  </mat-dialog-actions>
+
+</div>

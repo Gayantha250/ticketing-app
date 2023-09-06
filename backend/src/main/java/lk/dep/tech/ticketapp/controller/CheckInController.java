@@ -88,7 +88,7 @@ public class CheckInController {
         String formattedDate = currentDate.format(formatterd);
 
         HourlyRateDTO hourlyRateDTO = hourlyRateService.getRatesByCategory(detailsById.getCategory());
-        LocalTime checkInTime = LocalTime.parse(detailsById.getRegNumber(), formatter);
+        LocalTime checkInTime = LocalTime.parse(detailsById.getTime(), formatter);
         Duration duration = Duration.between(checkInTime, currentTime);
         long minutes = duration.toMinutes() % 60;
         String total = String.valueOf(minutes * Integer.parseInt(hourlyRateDTO.getHourly_rate()));

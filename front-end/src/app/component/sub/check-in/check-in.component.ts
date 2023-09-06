@@ -5,6 +5,9 @@ import {CategorypopComponent} from "../../popUpWindows/categorypop/categorypop.c
 import {CheckInService} from "../../../service/check-in.service";
 import {CheckIn} from "../../../DTO/ResponseCheckInDTO";
 import { ViewChild, ElementRef } from '@angular/core';
+import {BillService} from "../../../service/bill.service";
+import {Bill} from "../../../DTO/ResponseCheckInBillDTO";
+import {BillpopComponent} from "../../popUpWindows/billpop/billpop.component";
 
 @Component({
   selector: 'app-check-in',
@@ -15,12 +18,11 @@ export class CheckInComponent implements OnInit{
   checkInDetails: Array<CheckIn> = [];
   tabKey: any = [];
   tabValue: any = [];
-  constructor(private matDialog: MatDialog, public checkInService: CheckInService) {
+  constructor(private matDialog: MatDialog, public checkInService: CheckInService,public billService:BillService) {
   }
-
   openDialog() {
     this.matDialog.open(CheckInpopComponent, {
-      width: '340xp',
+      width: '340px',
     });
   }
 
@@ -43,6 +45,18 @@ export class CheckInComponent implements OnInit{
   deleteRow(tabValueElement: any) {
     this.checkInService.deleteCheckIns(tabValueElement[0]).subscribe((response:any)=>{
      window.location.reload();
+    });
+  }
+  viewBill(tabValueElement: any) {
+    this.billService.getAllBillData(tabValueElement[0]).subscribe((response:any)=>{
+      this.billService.billData(response.data);
+    })
+  }
+
+  openDialogForView() {
+    console.log("open")
+    this.matDialog.open(BillpopComponent, {
+      width: '340px',
     });
   }
 }
